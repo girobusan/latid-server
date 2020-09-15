@@ -1,0 +1,22 @@
+{
+  "name": "latid-server",
+  "version": "1.0.0",
+  "description": "LATID server",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "cd out ; node latidserv.js",
+    "watch": "npx webpack",
+    "build" : "npx webpack --mode production"
+  },
+  "author": "gt",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "mime-types": "^2.1.27",
+    "minimist": "^1.2.5",
+    "walk": "^2.3.14"
+  }
+}
