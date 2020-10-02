@@ -17,7 +17,7 @@ var server = null;
 
 
 export function configure(conf) {
-    console.log("Conf" , conf)
+    //console.log("Conf" , conf)
     config = Object.assign(config, conf);
 }
 
@@ -85,7 +85,7 @@ const requestListener = function (req, res) {
     } else if (req.method == "POST") {        
         let data = new Uint8Array();
         req.on('data' , c=> data = concatTypedArrays(data , new Uint8Array(c) ));
-        req.on('end' , ()=>{console.log(data.length) ;API.invoke(req, res, parts[1] , params , data)});        
+        req.on('end' , ()=>{API.invoke(req, res, parts[1] , params , data)});        
     }else{
         API.invoke(req, res, parts[1] , params , "" )
     }
