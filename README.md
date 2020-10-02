@@ -1,4 +1,4 @@
 Latid server
 ============
 
-Minimal server for workin with Latid sites.
+Minimal server for editing Latid sites via browser.
