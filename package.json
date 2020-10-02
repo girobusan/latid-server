@@ -6,7 +6,7 @@
   "scripts": {
     "test": "cd out ; node latidserv.js",
     "watch": "npx webpack",
-    "build" : "npx webpack --mode production"
+    "build": "npx webpack --mode production"
   },
   "author": "gt",
   "license": "ISC",

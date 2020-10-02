@@ -43,6 +43,7 @@ const APIHandlers = {
                 //copy
                 .then(
                     fsp.copyFile(fr, t)
+                    .catch(err=> console.error("Copy error:" , err))
                 )
                 //send responce
                 .then(callb("copied"))
