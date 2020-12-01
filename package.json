@@ -17,6 +17,7 @@
   "dependencies": {
     "mime-types": "^2.1.27",
     "minimist": "^1.2.5",
+    "open": "^7.3.0",
     "walk": "^2.3.14"
   }
 }
