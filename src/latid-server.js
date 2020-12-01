@@ -41,6 +41,7 @@ function stop() {
 }
 
 module.exports = {
+    "getURL" : getURL,
     "configure": configure,
     "start": start,
     "stop": stop
