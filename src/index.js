@@ -9,7 +9,7 @@ lserv.configure({
     port: argv.p || 9999,
     root: argv.d || process.cwd()
 })
-lserv.start(ver);
+lserv.start("Version: " + ver);
 if(argv.b){
     setTimeout( ()=>open(lserv.getURL()) , 500);
 }
