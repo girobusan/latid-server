@@ -13,3 +13,4 @@ It works best for multipage sites (tested with >2000 pages) with primary static
 For more info see the [ docs ](https://github.com/girobusan/latid/blob/master/docs/index.md).
 
 &#128031;
+--------
