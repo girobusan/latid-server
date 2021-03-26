@@ -1,7 +1,7 @@
 Latid server
 ============
 
-Reference realization of server for editing **Latid** sites via browser written in `node.js`. APi is still not stable enough.
+Reference realization of local server for editing **Latid** sites via browser written in `node.js`. APi is still not stable enough.
 
 ![screenshot](screenshot.png) 
 
