@@ -1,6 +1,7 @@
 const fsp = require('fs').promises;
 const fs = require('fs');
 const path = require("path");
+const posixPath = path.posix;
 var walk = require('walk');
 //const querystring = require('querystring');
 //function (res, point , params , method)
@@ -33,8 +34,8 @@ const APIHandlers = {
     //COPY
     copy: function (params, callb) {
         //params.from -> params.to
-        let fr = path.join(config.root, params.from);
-        let t = path.join(config.root, params.to);
+        let fr = path.join(config.root, ...params.from.split(path.sep));
+        let t = path.join(config.root, ...params.to.split(path.sep));
         //check if from exists and is file
         if (fs.existsSync(fr) && fs.lstatSync(fr).isFile()) {
             //make dirs for copying
@@ -55,7 +56,7 @@ const APIHandlers = {
     write: function (params, callb, data) {
         //console.log("POST data:" , data , "length:" , data.length);
 
-        let where = path.join(config.root, Object.keys(params)[0]);
+        let where = path.join(config.root, Object.keys(params)[0].split(posixPath.sep));
         //console.log("Write to:" , where); 
         //create dirs
         let wparsed = path.parse(where);
@@ -68,7 +69,7 @@ const APIHandlers = {
     },
     //LIST
     list: function (params, callb) {
-        let dir = path.join(config.root, Object.keys(params)[0] || "");
+        let dir = path.join(config.root, Object.keys(params)[0].split(posixPath.sep) || "");
 
         if(!fs.existsSync(dir) || !fs.lstatSync(dir).isDirectory()){
             callb(false , "Path does not exist or is not a directory")
