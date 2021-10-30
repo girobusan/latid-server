@@ -60,8 +60,8 @@ const APIHandlers = {
         //console.log("Write to:" , where); 
         //create dirs
         let wparsed = path.parse(where);
-        console.log("About to mkdir" , path.join(wparsed.root , wparsed.dir));
-        console.log(where , wparsed);
+        //console.log("About to mkdir" , path.join(wparsed.root , wparsed.dir));
+        //console.log(where , wparsed);
         fs.mkdirSync(path.join( wparsed.dir), { recursive: true })
 
         fsp.writeFile(where, data, 'binary')
