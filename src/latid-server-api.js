@@ -34,14 +34,14 @@ const APIHandlers = {
     //COPY
     copy: function (params, callb) {
         //params.from -> params.to
-        let fr = path.join(config.root, ...params.from.split(path.sep));
-        let t = path.join(config.root, ...params.to.split(path.sep));
+        let fr = path.join(config.root, params.from);
+        let t = path.join(config.root, params.to);
         //check if from exists and is file
         if (fs.existsSync(fr) && fs.lstatSync(fr).isFile()) {
             //make dirs for copying
             let pathparts = path.parse(t);
             //we have to do SYNC
-            fs.mkdirSync(path.join(pathparts.root, pathparts.dir), { recursive: true });
+            fs.mkdirSync(path.join( pathparts.dir), { recursive: true });
             //copy
 
             fsp.copyFile(fr, t)
@@ -56,11 +56,13 @@ const APIHandlers = {
     write: function (params, callb, data) {
         //console.log("POST data:" , data , "length:" , data.length);
 
-        let where = path.join(config.root, Object.keys(params)[0].split(posixPath.sep));
+        let where = path.join(config.root, Object.keys(params)[0]);
         //console.log("Write to:" , where); 
         //create dirs
         let wparsed = path.parse(where);
-        fs.mkdirSync(path.join(wparsed.root, wparsed.dir), { recursive: true })
+        console.log("About to mkdir" , path.join(wparsed.root , wparsed.dir));
+        console.log(where , wparsed);
+        fs.mkdirSync(path.join( wparsed.dir), { recursive: true })
 
         fsp.writeFile(where, data, 'binary')
             .then(callb("Written"))
@@ -69,7 +71,7 @@ const APIHandlers = {
     },
     //LIST
     list: function (params, callb) {
-        let dir = path.join(config.root, Object.keys(params)[0].split(posixPath.sep) || "");
+        let dir = path.join(config.root, Object.keys(params)[0] || "");
 
         if(!fs.existsSync(dir) || !fs.lstatSync(dir).isDirectory()){
             callb(false , "Path does not exist or is not a directory")
