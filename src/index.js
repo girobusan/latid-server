@@ -29,13 +29,15 @@ try{
   }
 }
 
-console.log(settings);
-console.log(settings.editor.local_server_port);
+// console.log(settings);
+// console.log(settings.editor.local_server_port);
 
-var portsetconf = settings.editor.local_server_port || "";
+var portsetconf = settings.editor.local_server_port ? settings.editor.local_server_port.toString() : "";
 console.log("Port is" , portset)
 if(portsetconf.match(/^\d\d+$/)){
   portset = parseInt(portsetconf);
+}else{
+  portsetconf=null;
 }
 
 
